@@ -23,7 +23,7 @@ const Navbar = () => {
 
   return (
     <nav className={`w-full bg-white border-b border-gray-100 ${jakarta.className}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-0">
         <div className="flex justify-between items-center h-24">
 
           {/* Logo */}
