@@ -31,7 +31,7 @@ const Hero = () => {
 
   return (
     <section className="w-full bg-white overflow-hidden">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 3xl:px-28
+      <div className="max-w-360 mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 3xl:px-28
                       py-12 sm:py-20 md:py-24 lg:py-28 xl:py-28">
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -103,12 +103,12 @@ const Hero = () => {
 
           {/* RIGHT IMAGE */}
           <div className="relative w-full
-                          h-[320px]
-                          sm:h-[420px]
-                          md:h-[500px]
-                          lg:h-[500px]
-                          xl:h-[550px]
-                          2xl:h-[600px]
+                          h-80
+                          sm:h-105
+                          md:h-125
+                          lg:h-125
+                          xl:h-137.5
+                          2xl:h-150
                           rounded-3xl overflow-hidden">
 
             <AnimatePresence mode="wait">
