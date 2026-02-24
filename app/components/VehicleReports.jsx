@@ -1,21 +1,21 @@
 "use client";
 
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
+import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Poppins, Urbanist } from "next/font/google";
+
 const urbanist = Urbanist({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
   variable: "--font-urbanist",
 });
 
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["300"],
+  weight: ["300", "400", "500"],
   variable: "--font-poppins",
 });
-
-
 
 const services = [
   "Comprehensive Vehicle History Reports",
@@ -25,37 +25,63 @@ const services = [
 ];
 
 const images = [
-  "https://res.cloudinary.com/dlyidp2yt/image/upload/v1771873965/pexels-artempodrez-8986070_jmhtbv.jpg", // Replace with your "/images/car1.jpg"
+  "https://res.cloudinary.com/dlyidp2yt/image/upload/v1771873965/pexels-artempodrez-8986070_jmhtbv.jpg",
   "https://res.cloudinary.com/dlyidp2yt/image/upload/v1771873593/pexels-cottonbro-4489749_caq7iq.jpg",
   "https://res.cloudinary.com/dlyidp2yt/image/upload/v1771873951/pexels-olly-3807277_s1wcnw.jpg",
 ];
 
+// Smooth Animation Constants (Matching your Stats Section)
+const SMOOTH_CURVE = [0.215, 0.61, 0.355, 1];
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: SMOOTH_CURVE },
+  },
+};
+
 const VehicleReports = () => {
   return (
-    <section className="w-full bg-[#07101D] py-16 px-6 lg:px-12">
+    <section className="w-full bg-[#07101D] py-20 lg:py-28 px-4 sm:px-6 lg:px-12 border-t border-white/5 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         
         {/* TOP HEADING SECTION */}
-        <div className={`mb-8 max-w-5xl ${urbanist.className}`}>
-          <h2 className="text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: SMOOTH_CURVE }}
+          className={`mb-12 lg:mb-16 max-w-5xl ${urbanist.className}`}
+        >
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight tracking-tight">
             Expert Vehicle Reports & Maintenance — 
             <span className="text-blue-500"> Anytime, Anywhere</span>
           </h2>
-        </div>
+        </motion.div>
 
         {/* MAIN GRID */}
-        <div className={`grid lg:grid-cols-2 gap-16 lg:gap-12 items-start ${poppins.className}`}>
+        <div className={`grid lg:grid-cols-2 gap-12 lg:gap-20 items-center ${poppins.className}`}>
 
           {/* LEFT SIDE - Images & Intro */}
-          <div className="space-y-6">
-            <p className="text-blue-400 text-xl font-medium max-w-lg leading-relaxed">
+          <motion.div 
+             initial="hidden"
+             whileInView="visible"
+             viewport={{ once: true }}
+             variants={{
+               visible: { transition: { staggerChildren: 0.15 } }
+             }}
+             className="space-y-8"
+          >
+            <motion.p variants={fadeUp} className="text-blue-400 text-lg sm:text-xl font-medium max-w-lg leading-relaxed">
               We realize that you lead a busy life, so we have made it easy for
               you to drop off your vehicle 24/7.
-            </p>
+            </motion.p>
 
             {/* Images Layout */}
-            <div className="grid grid-cols-2 gap-4">
-              <div className="relative h-75 rounded-xl overflow-hidden shadow-lg border border-white/10 group">
+            <motion.div variants={fadeUp} className="grid grid-cols-2 gap-3 sm:gap-4">
+              <div className="relative h-64 sm:h-80 lg:h-112.5 rounded-2xl overflow-hidden shadow-lg border border-white/10 group">
                 <Image 
                   src={images[0]} 
                   alt="Inspection 1" 
@@ -64,8 +90,8 @@ const VehicleReports = () => {
                 />
               </div>
 
-              <div className="grid gap-4">
-                <div className="relative h-35.5 rounded-xl overflow-hidden shadow-lg border border-white/10 group">
+              <div className="grid gap-3 sm:gap-4">
+                <div className="relative h-32 sm:h-38 lg:h-53.75 rounded-2xl overflow-hidden shadow-lg border border-white/10 group">
                   <Image 
                     src={images[1]} 
                     alt="Inspection 2" 
@@ -73,7 +99,7 @@ const VehicleReports = () => {
                     className="object-cover transition-transform duration-700 group-hover:scale-105" 
                   />
                 </div>
-                <div className="relative h-35.5 rounded-xl overflow-hidden shadow-lg border border-white/10 group">
+                <div className="relative h-32 sm:h-38 lg:h-53.75 rounded-2xl overflow-hidden shadow-lg border border-white/10 group">
                   <Image 
                     src={images[2]} 
                     alt="Inspection 3" 
@@ -82,53 +108,60 @@ const VehicleReports = () => {
                   />
                 </div>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* RIGHT SIDE - Content & Features */}
-          <div className="space-y-10 lg:pl-8 flex flex-col justify-center h-full">
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={{
+              visible: { transition: { staggerChildren: 0.1, delayChildren: 0.3 } }
+            }}
+            className="space-y-10 lg:pl-6"
+          >
             
-            <p className="text-gray-300 text-lg leading-relaxed font-light">
+            <motion.p variants={fadeUp} className="text-gray-400 text-base sm:text-lg leading-relaxed font-light">
               We understand that your time is valuable, which is why{" "}
               <strong className="text-white font-semibold">Inspect a Report</strong>{" "}
-              offers instant repair and maintenance reports for your vehicle. Enter your VIN number and get a detailed analysis of past repairs, diagnostics, and maintenance schedules for cars, trucks, and bikes — available 24/7.
-            </p>
+              offers instant repair and maintenance reports for your vehicle. Enter your VIN number and get a detailed analysis of past repairs, diagnostics, and maintenance schedules — available 24/7.
+            </motion.p>
 
             {/* Feature List */}
-            <div className="">
-              <div className="relative pl-4 mb-3">
-  {/* Vertical Glowing Line - Ab hamesha full height rahegi */}
-  <div className="absolute left-0 top-0 bottom-0 w-[2.5px] bg-blue-600 rounded-full shadow-[0_0_10px_rgba(37,99,235,0.4)]" />
-  
-  <h4 className="text-blue-400 font-bold uppercase tracking-[0.25em] text-[11px] leading-tight">
-    What We Offer
-  </h4>
-  
-  {/* Underline Gradient - Subtle finish ke liye */}
-  <div className="h-px w-16 bg-linear-to-r from-blue-500/40 via-blue-500/10 to-transparent mt-1.5" />
-</div>
+            <motion.div variants={fadeUp} className="space-y-6">
+              <div className="relative pl-4 mb-6">
+                <div className="absolute left-0 top-0 bottom-0 w-[2.5px] bg-blue-600 rounded-full shadow-[0_0_10px_rgba(37,99,235,0.4)]" />
+                <h4 className={`${urbanist.className} text-blue-400 font-bold uppercase tracking-[0.25em] text-[10px] sm:text-[11px] leading-tight`}>
+                  What We Offer
+                </h4>
+              </div>
 
-              <ul className="space-y-5">
+              <ul className="grid gap-4 sm:gap-5">
                 {services.map((service, idx) => (
-                  <li key={idx} className="flex items-start gap-2 text-gray-200">
-                    <span className="mt-0.5 w-6 h-6 shrink-0 flex  items-center justify-center rounded-full  text-yellow-400   text-xs font-bold">
-                      ✓
-                    </span>
-                    <span className="font-medium">{service}</span>
-                  </li>
+                  <motion.li 
+                    key={idx} 
+                    variants={fadeUp}
+                    className="flex items-start gap-3 text-gray-200"
+                  >
+                    <div className="mt-1 shrink-0">
+                      <CheckCircle2 size={18} className="text-blue-500" />
+                    </div>
+                    <span className="text-sm sm:text-base font-medium">{service}</span>
+                  </motion.li>
                 ))}
               </ul>
-            </div>
+            </motion.div>
 
             {/* Action Button */}
-            <div>
-              <button className="group inline-flex items-center gap-3 bg-blue-600 text-white px-8 py-4 rounded-sm font-semibold hover:bg-white hover:text-black cursor-pointer transition-all duration-300 active:scale-95 shadow-[0_0_20px_rgba(37,99,235,0.2)] hover:shadow-[0_0_25px_rgba(37,99,235,0.4)]">
-                Explore More
+            <motion.div variants={fadeUp} className="pt-4">
+              <button className="group w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-blue-600 text-white px-9 py-4 rounded-sm font-bold text-xs sm:text-sm tracking-widest hover:bg-white hover:text-[#07101D] transition-all duration-300 active:scale-95 shadow-[0_10px_20px_rgba(37,99,235,0.2)]">
+                EXPLORE MORE
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </button>
-            </div>
+            </motion.div>
 
-          </div>
+          </motion.div>
 
         </div>
       </div>
