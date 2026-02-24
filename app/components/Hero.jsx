@@ -3,15 +3,10 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { AnimatePresence , motion } from "framer-motion";
-import { Plus_Jakarta_Sans , Urbanist } from "next/font/google";
-import { Car } from "lucide-react";
+import {  Urbanist } from "next/font/google";
 import PremiumButton from "./ui/Button";
 
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-jakarta",
-});
+
 const urbanist = Urbanist({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
