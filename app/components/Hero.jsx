@@ -2,10 +2,9 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { AnimatePresence , motion } from "framer-motion";
-import {  Urbanist } from "next/font/google";
+import { AnimatePresence, motion } from "framer-motion";
+import { Urbanist } from "next/font/google";
 import PremiumButton from "./ui/Button";
-
 
 const urbanist = Urbanist({
   subsets: ["latin"],
@@ -22,104 +21,138 @@ const Hero = () => {
 
   const [current, setCurrent] = useState(0);
 
-  // ✅ Auto Carousel
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % images.length);
-    }, 3000);
+    }, 4500); // smoother timing
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <section className="w-full bg-white py-24 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <section className="w-full bg-white overflow-hidden">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 2xl:px-20 3xl:px-28
+                      py-12 sm:py-20 md:py-24 lg:py-28 xl:py-28">
 
-        {/* LEFT SIDE */}
-        <div className="space-y-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
-          <div className="space-y-6">
-            <h1 className={`text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight ${urbanist.className}`}>
-             Auto Repair <br></br> &  Maintenance 
-              <span className="block text-blue-600">
-               Report Provider
-              </span>
-            </h1>
+          {/* LEFT CONTENT */}
+          <div className="space-y-8 lg:space-y-10">
 
-            <p className="text-lg text-gray-500 max-w-xl leading-relaxed">
-Comprehensive vehicle history and diagnostics. Enter your VIN to get expert maintenance reports for your ride.
-            </p>
+            {/* Heading */}
+            <div className="space-y-6">
+              <h1
+                className={`
+                ${urbanist.className}
+                font-extrabold
+                text-[clamp(2rem,5vw,4rem)]
+                leading-[1.1]
+                text-gray-900
+              `}
+              >
+                Auto Repair & Maintenance
+                <span className="block text-blue-600">
+                  Report Provider
+                </span>
+              </h1>
+
+              <p className="text-gray-500 
+                             text-base 
+                             sm:text-lg 
+                             md:text-xl 
+                             leading-relaxed 
+                             max-w-xl">
+                Comprehensive vehicle history and diagnostics. Enter your VIN
+                to get expert maintenance reports for your ride.
+              </p>
+            </div>
+
+            {/* Button */}
+            <div className="flex flex-wrap gap-4">
+              <PremiumButton />
+            </div>
+
+            {/* Thumbnails */}
+            <div className="flex gap-3 sm:gap-4 pt-4 flex-wrap">
+              {images.map((img, index) => (
+                <div
+                  key={index}
+                  onClick={() => setCurrent(index)}
+                  className={`relative 
+                    w-14 h-14 
+                    sm:w-16 sm:h-16 
+                    md:w-18 md:h-18 
+                    rounded-xl overflow-hidden cursor-pointer 
+                    transition-all duration-300
+                    ${
+                      current === index
+                        ? "ring-2 ring-blue-600 scale-105"
+                        : "opacity-70 hover:opacity-100"
+                    }`}
+                >
+                  <Image
+                    src={img}
+                    alt="preview"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
 
-          <div className="flex flex-wrap gap-4">
-<PremiumButton/>
-          </div>
+          {/* RIGHT IMAGE */}
+          <div className="relative w-full
+                          h-[320px]
+                          sm:h-[420px]
+                          md:h-[500px]
+                          lg:h-[500px]
+                          xl:h-[550px]
+                          2xl:h-[600px]
+                          rounded-3xl overflow-hidden">
 
-          {/* Small Clean Thumbnails */}
-          <div className="flex gap-4 pt-4">
-            {images.map((img, index) => (
-              <div
-                key={index}
-                onClick={() => setCurrent(index)}
-                className={`relative w-16 h-16 rounded-lg overflow-hidden cursor-pointer transition-all duration-300 ${
-                  current === index
-                    ? "ring-2 ring-blue-600 scale-105"
-                    : "opacity-70 hover:opacity-100"
-                }`}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={current}
+                initial={{
+                  opacity: 0,
+                  y: 40,
+                  scale: 1.05,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                  scale: 1,
+                }}
+                exit={{
+                  opacity: 0,
+                  y: -30,
+                  scale: 1.02,
+                }}
+                transition={{
+                  duration: 0.9,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                className="absolute inset-0"
               >
                 <Image
-                  src={img}
-                  alt="preview"
+                  src={images[current]}
+                  alt="Hero"
                   fill
+                  priority
+                  sizes="(max-width: 768px) 100vw,
+                         (max-width: 1200px) 50vw,
+                         50vw"
                   className="object-cover"
                 />
-              </div>
-            ))}
+
+                {/* Premium Soft Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
+              </motion.div>
+            </AnimatePresence>
           </div>
 
         </div>
-
-        {/* RIGHT SIDE IMAGE */}
-   <div className="relative w-full h-87.5 sm:h-112.5 lg:h-137.5 overflow-hidden rounded-lg">
-
-<AnimatePresence mode="wait">
-  <motion.div
-    key={current}
-    initial={{
-      opacity: 0,
-      y: 30,
-      scale: 1.05,
-    }}
-    animate={{
-      opacity: 1,
-      y: 0,
-      scale: 1,
-    }}
-    exit={{
-      opacity: 0,
-      y: -20,
-      scale: 1.02,
-    }}
-    transition={{
-      duration: 0.8,
-      ease: [0.22, 1, 0.36, 1], // smooth premium easing
-    }}
-    className="absolute inset-0 overflow-hidden rounded-2xl"
-  >
-    <Image
-      src={images[current]}
-      alt="Hero"
-      fill
-      priority
-      className="object-cover"
-    />
-
-    {/* Very soft overlay for premium tone */}
-    <div className="absolute inset-0 bg-black/5" />
-  </motion.div>
-</AnimatePresence>
-</div>
-
       </div>
     </section>
   );
