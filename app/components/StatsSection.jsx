@@ -123,7 +123,7 @@ const StatsSection = () => {
               transition={{ delay: 0.8, duration: 0.6 }}
               className="pt-2"
             >
-              <button className="group relative w-full sm:w-auto inline-flex justify-center items-center gap-3 bg-blue-600 text-white px-8 lg:px-9 py-4 rounded-sm font-bold text-xs sm:text-sm tracking-wide transition-all duration-300 hover:bg-white hover:text-[#07101D] active:scale-95 shadow-lg">
+              <button className="group cursor-pointer relative w-full sm:w-auto inline-flex justify-center items-center gap-3 bg-blue-600 text-white px-8 lg:px-9 py-4 rounded-sm font-bold text-xs sm:text-sm tracking-wide transition-all duration-300 hover:bg-white hover:text-[#07101D] active:scale-95 shadow-lg">
                 <span className="relative z-10 uppercase">View Pricing Plans</span>
                 <ArrowRight size={16} className="relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
               </button>

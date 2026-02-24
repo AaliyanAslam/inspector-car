@@ -155,7 +155,7 @@ const VehicleReports = () => {
 
             {/* Action Button */}
             <motion.div variants={fadeUp} className="pt-4">
-              <button className="group w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-blue-600 text-white px-9 py-4 rounded-sm font-bold text-xs sm:text-sm tracking-widest hover:bg-white hover:text-[#07101D] transition-all duration-300 active:scale-95 shadow-[0_10px_20px_rgba(37,99,235,0.2)]">
+              <button className="cursor-pointer group w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-blue-600 text-white px-9 py-4 rounded-sm font-bold text-xs sm:text-sm tracking-widest hover:bg-white hover:text-[#07101D] transition-all duration-300 active:scale-95 shadow-[0_10px_20px_rgba(37,99,235,0.2)]">
                 EXPLORE MORE
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </button>
