@@ -71,7 +71,7 @@ const WhatWeDo = () => {
       <div className="max-w-7xl mx-auto">
 
         {/* TOP SECTION */}
-        <div className="grid lg:grid-cols-2 gap-12 items-end mb-16">
+        <div className="grid lg:grid-cols-2  gap-12 items-end mb-16">
           <div className={`space-y-6 ${urbanist.className}`}>
             {/* Signature Vertical Accent - Fixed (No Motion) */}
             <div className="relative pl-4">
@@ -93,7 +93,7 @@ const WhatWeDo = () => {
         </div>
 
         {/* CARDS SECTION */}
-        <div className={`grid md:grid-cols-2 lg:grid-cols-3 gap-6 ${poppins.className}`}>
+        <div className={`grid sm:grid-cols-2 lg:grid-cols-3 gap-6 ${poppins.className}`}>
           {services.map((service, index) => (
             <div
               key={index}

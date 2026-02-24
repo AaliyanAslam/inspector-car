@@ -36,7 +36,7 @@ const VehicleReports = () => {
       <div className="max-w-7xl mx-auto">
         
         {/* TOP HEADING SECTION */}
-        <div className={`mb-16 max-w-5xl ${urbanist.className}`}>
+        <div className={`mb-8 max-w-5xl ${urbanist.className}`}>
           <h2 className="text-4xl lg:text-5xl font-bold text-white leading-tight tracking-tight">
             Expert Vehicle Reports & Maintenance — 
             <span className="text-blue-500"> Anytime, Anywhere</span>
@@ -47,7 +47,7 @@ const VehicleReports = () => {
         <div className={`grid lg:grid-cols-2 gap-16 lg:gap-12 items-start ${poppins.className}`}>
 
           {/* LEFT SIDE - Images & Intro */}
-          <div className="space-y-10">
+          <div className="space-y-6">
             <p className="text-blue-400 text-xl font-medium max-w-lg leading-relaxed">
               We realize that you lead a busy life, so we have made it easy for
               you to drop off your vehicle 24/7.
@@ -55,7 +55,7 @@ const VehicleReports = () => {
 
             {/* Images Layout */}
             <div className="grid grid-cols-2 gap-4">
-              <div className="relative h-75 rounded-2xl overflow-hidden shadow-lg border border-white/10 group">
+              <div className="relative h-75 rounded-xl overflow-hidden shadow-lg border border-white/10 group">
                 <Image 
                   src={images[0]} 
                   alt="Inspection 1" 
@@ -65,7 +65,7 @@ const VehicleReports = () => {
               </div>
 
               <div className="grid gap-4">
-                <div className="relative h-35.5 rounded-2xl overflow-hidden shadow-lg border border-white/10 group">
+                <div className="relative h-35.5 rounded-xl overflow-hidden shadow-lg border border-white/10 group">
                   <Image 
                     src={images[1]} 
                     alt="Inspection 2" 
@@ -73,7 +73,7 @@ const VehicleReports = () => {
                     className="object-cover transition-transform duration-700 group-hover:scale-105" 
                   />
                 </div>
-                <div className="relative h-35.5 rounded-2xl overflow-hidden shadow-lg border border-white/10 group">
+                <div className="relative h-35.5 rounded-xl overflow-hidden shadow-lg border border-white/10 group">
                   <Image 
                     src={images[2]} 
                     alt="Inspection 3" 
