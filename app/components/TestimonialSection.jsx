@@ -77,7 +77,7 @@ const CleanTestimonials = () => {
 
         {/* RIGHT SIDE: PREMIUM GLASS CARD */}
         {/* Added dynamic height handling for mobile responsiveness */}
-        <div className="w-full lg:w-[60%] relative flex items-center min-h-[380px] sm:min-h-[400px]">
+        <div className="w-full lg:w-[60%] relative flex items-center min-h-95 sm:min-h-100">
           <AnimatePresence mode="wait">
             <motion.div
               key={index}
@@ -85,7 +85,7 @@ const CleanTestimonials = () => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
               transition={{ duration: 0.5, ease: "easeInOut" }}
-              className="relative lg:absolute lg:inset-0 backdrop-blur-xl bg-gradient-to-br from-white via-white to-blue-50/40 
+              className="relative lg:absolute lg:inset-0 backdrop-blur-xl bg-linear-to-br from-white via-white to-blue-50/40 
               p-8 sm:p-14 rounded-3xl border border-blue-100/40 
               shadow-[0_20px_60px_rgba(0,0,0,0.05)] flex flex-col justify-between overflow-hidden w-full"
             >
@@ -105,7 +105,7 @@ const CleanTestimonials = () => {
               {/* USER SECTION */}
               <div className="flex items-center gap-4 sm:gap-5 mt-8 sm:mt-12 relative z-10">
                 <div className="relative h-12 w-12 sm:h-16 sm:w-16 rounded-full overflow-hidden 
-                ring-4 ring-blue-50 shadow-sm flex-shrink-0">
+                ring-4 ring-blue-50 shadow-sm shrink-0">
                   <Image
                     src={testimonials[index].img}
                     alt={testimonials[index].name}
@@ -125,7 +125,7 @@ const CleanTestimonials = () => {
               </div>
 
               {/* PROGRESS BAR - Refined for "Clean" look */}
-              <div className="absolute bottom-0 left-0 h-[2px] w-full bg-gray-50">
+              <div className="absolute bottom-0 left-0 h-0.5 w-full bg-gray-50">
                 <motion.div
                   key={index}
                   initial={{ width: 0 }}
