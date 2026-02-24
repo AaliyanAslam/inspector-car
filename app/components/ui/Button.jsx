@@ -35,7 +35,7 @@ const GlowButton = ({ text = "Start Vehicle Check" }) => {
       </span>
 
       {/* Button Content */}
-      <span className="relative z-10 flex items-center gap-2 bg-white rounded-full py-3 px-6 overflow-hidden">
+      <span className="relative z-10 flex items-center gap-2 bg-white rounded-full py-2 lg:py-3 px-4 lg:px-6 overflow-hidden">
 
         {/* Car Animation */}
         <motion.span

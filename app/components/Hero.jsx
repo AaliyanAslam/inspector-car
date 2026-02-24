@@ -3,13 +3,19 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
-import { Urbanist } from "next/font/google";
+import { Poppins, Urbanist } from "next/font/google";
 import PremiumButton from "./ui/Button";
 
 const urbanist = Urbanist({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   variable: "--font-urbanist",
+});
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+  variable: "--font-poppins",
 });
 
 const Hero = () => {
@@ -45,7 +51,7 @@ const Hero = () => {
                 className={`
                 ${urbanist.className}
                 font-extrabold
-                text-[clamp(2rem,5vw,4rem)]
+                text-3xl sm:text-4xl lg:text-5xl
                 leading-[1.1]
                 text-gray-900
               `}
@@ -56,12 +62,12 @@ const Hero = () => {
                 </span>
               </h1>
 
-              <p className="text-gray-500 
-                             text-base 
+              <p className={`text-gray-500 
+                             text-sm 
                              sm:text-lg 
                              md:text-xl 
                              leading-relaxed 
-                             max-w-xl">
+                             max-w-xl ${poppins.className}`}>
                 Comprehensive vehicle history and diagnostics. Enter your VIN
                 to get expert maintenance reports for your ride.
               </p>
