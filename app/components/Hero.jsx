@@ -51,7 +51,7 @@ const Hero = () => {
                 className={`
                 ${urbanist.className}
                 font-extrabold
-                text-3xl sm:text-4xl lg:text-5xl
+                text-2xl sm:text-4xl lg:text-5xl
                 leading-[1.1]
                 text-gray-900
               `}
@@ -63,7 +63,7 @@ const Hero = () => {
               </h1>
 
               <p className={`text-gray-500 
-                             text-sm 
+                             text-xs 
                              sm:text-lg 
                              md:text-xl 
                              leading-relaxed 
