@@ -21,19 +21,18 @@ const poppins = Poppins({
 const CallToAction = () => {
   return (
     <section 
-      className={`relative w-full min-h-125 flex items-center justify-center overflow-hidden py-20 ${urbanist.className}`}
+      className={`relative w-full min-h-125 flex items-center justify-center overflow-hidden py-24 ${urbanist.className}`}
     >
-      {/* FIXED BACKGROUND IMAGE */}
+      {/* FIXED BACKGROUND IMAGE WITH MOBILE FIX */}
       <div 
-        className="absolute inset-0 z-0 bg-cover bg-center bg-fixed"
+        className="absolute inset-0 z-0 bg-cover bg-center bg-scroll lg:bg-fixed"
         style={{ 
           backgroundImage: `url('https://res.cloudinary.com/dlyidp2yt/image/upload/v1771958973/shop-man-s-hand-glove-holds-wrench-front-broken-automobile_1_nlfctj.jpg')`,
         }}
       />
 
-      {/* GRADIENT OVERLAY (Centered Dark Overlay) */}
-      <div className="absolute inset-0 z-10 bg-black/60 backdrop-blur-[2px]" />
-      <div className="absolute inset-0 z-10 bg-radial-gradient from-transparent to-black/40" />
+      {/* GRADIENT OVERLAY */}
+      <div className="absolute inset-0 z-10 bg-black/65 backdrop-blur-[1px]" />
 
       {/* CONTENT CONTAINER */}
       <div className="relative z-20 max-w-4xl mx-auto px-6 text-center">
@@ -86,14 +85,12 @@ const CallToAction = () => {
         >
           <Link 
             href="/contact"
-            className="group relative inline-flex items-center justify-center px-10 py-4 font-bold text-white transition-all duration-300 bg-blue-600  hover:bg-white hover:text-black hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(37,99,235,0.3)]"
+            className="group relative inline-flex items-center justify-center px-10 py-4 font-bold text-white transition-all duration-300 bg-blue-600  hover:bg-white hover:text-black hover:scale-105 active:scale-95 shadow-[0_10px_30px_rgba(37,99,235,0.3)]"
           >
             <span className="relative z-10 flex items-center gap-2">
               Contact Us
               <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
             </span>
-            {/* Subtle Button Shine */}
-            <div className="absolute inset-0 transition-opacity rounded-full opacity-0 group-hover:opacity-100 bg-linear-to-r from-transparent via-white/10 to-transparent" />
           </Link>
         </motion.div>
 
