@@ -4,6 +4,7 @@ import Hero from './Hero'
 import VehicleReports from './VehicleReports'
 import WhatWeDo from './WhatWeDo'
 import StatsSection from './StatsSection'
+import GlobalPresence from './GlobalPresence'
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
     <VehicleReports/>
     <WhatWeDo/>
     <StatsSection/>
+    <GlobalPresence/>
     </>
   )
 }
