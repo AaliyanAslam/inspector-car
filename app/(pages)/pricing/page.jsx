@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import { Urbanist, Poppins } from "next/font/google";
 import { Check } from "lucide-react";
 import Navbar from "@/app/components/Navbar";
+import PageTitle from "@/app/components/ui/PageTitle";
+import Footer from "@/app/components/Footer";
 
 const urbanist = Urbanist({
   subsets: ["latin"],
@@ -61,6 +63,7 @@ const PricingSection = () => {
   return (
  <>
  <Navbar/>
+ <PageTitle tittle="Pricing"/>
     <section className={`py-24 bg-[#F8F9FA] ${urbanist.className}`}>
       <div className="max-w-7xl mx-auto px-6">
         
@@ -148,6 +151,7 @@ const PricingSection = () => {
         </p>
       </div>
     </section>
+    <Footer/>
  </>
   );
 };
