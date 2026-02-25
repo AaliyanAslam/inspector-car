@@ -7,6 +7,8 @@ export default function PaypalButton({ amount }) {
     <PayPalScriptProvider
       options={{
         "client-id": process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID,
+        components: "buttons",
+        "disable-funding": "paylater", // 👈 ye line add karo
       }}
     >
       <PayPalButtons
