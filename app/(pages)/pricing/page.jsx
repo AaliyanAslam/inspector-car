@@ -7,6 +7,7 @@ import { Check } from "lucide-react";
 import Navbar from "@/app/components/Navbar";
 import PageTitle from "@/app/components/ui/PageTitle";
 import Footer from "@/app/components/Footer";
+import PaypalButton from "@/app/components/ui/PayPalButton";
 
 const urbanist = Urbanist({
   subsets: ["latin"],
@@ -132,7 +133,7 @@ const PricingSection = () => {
               </ul>
 
               {/* Action Button */}
-              <button 
+              {/* <button 
                 className={`w-full py-4 rounded-2xl font-bold transition-all duration-300 ${
                   plan.highlight 
                   ? "bg-blue-600 text-white hover:bg-blue-700 shadow-lg shadow-blue-200" 
@@ -140,7 +141,8 @@ const PricingSection = () => {
                 }`}
               >
                 Buy Now
-              </button>
+              </button> */}
+              <PaypalButton amount={plan.price}/>
             </motion.div>
           ))}
         </div>
