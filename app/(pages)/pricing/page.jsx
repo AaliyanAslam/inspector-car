@@ -2,94 +2,154 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Plus_Jakarta_Sans, Urbanist } from "next/font/google";
-import { Rocket, Bell, ArrowLeft } from "lucide-react";
-import Link from "next/link";
-
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-jakarta",
-});
+import { Urbanist, Poppins } from "next/font/google";
+import { Check } from "lucide-react";
+import Navbar from "@/app/components/Navbar";
 
 const urbanist = Urbanist({
   subsets: ["latin"],
-  weight: ["700", "800"],
+  weight: ["600", "700", "800"],
   variable: "--font-urbanist",
 });
 
-const PricingComingSoon = () => {
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["300", "400", "500"],
+  variable: "--font-poppins",
+});
+
+const pricingPlans = [
+  {
+    name: "Basic Plan",
+    price: "59.99",
+    features: [
+      "Vehicle Overview",
+      "Vehicle title status",
+      "Vehicle mileage",
+      "Vehicle ownership history",
+      "Vehicle accident history",
+    ],
+    highlight: false,
+  },
+  {
+    name: "Standard Plan",
+    price: "74.99",
+    features: [
+      "Vehicle year, make, model, and trim",
+      "Vehicle engine and transmission",
+      "Vehicle accident history",
+      "Sales Listing",
+      "Vehicle title status",
+    ],
+    highlight: true, // "Popular" choice
+  },
+  {
+    name: "Premium Plan",
+    price: "99.99",
+    features: [
+      "Vehicle Full Overview",
+      "Vehicle maintenance & repair costs",
+      "Vehicle Specification",
+      "Vehicle trade-in value",
+      "Vehicle financing information",
+    ],
+    highlight: false,
+  },
+];
+
+const PricingSection = () => {
   return (
-    <div className={`min-h-[90vh] w-full flex items-center justify-center bg-[#fcfcfd] px-6 py-12 ${jakarta.className}`}>
-      
-      {/* Background Decorative Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-[10%] -right-[10%] w-[40%] h-[40%] bg-blue-50 rounded-full blur-[120px] opacity-60" />
-        <div className="absolute -bottom-[10%] -left-[10%] w-[40%] h-[40%] bg-orange-50 rounded-full blur-[120px] opacity-60" />
-      </div>
-
-      <div className="relative z-10 max-w-3xl w-full text-center">
+ <>
+ <Navbar/>
+    <section className={`py-24 bg-[#F8F9FA] ${urbanist.className}`}>
+      <div className="max-w-7xl mx-auto px-6">
         
-  
-    
-
-        {/* Heading */}
-        <motion.h1 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className={`${urbanist.className} text-4xl sm:text-6xl font-extrabold text-[#1a2b3c] mb-6 tracking-tight leading-tight`}
-        >
-          Premium Pricing <br />
-          <span className="text-blue-600">Coming Soon</span>
-        </motion.h1>
-
-        {/* Description */}
-        <motion.p 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-          className="text-slate-500 text-lg sm:text-xl max-w-xl mx-auto mb-12 font-light leading-relaxed"
-        >
-          We are finalizing our flexible plans to give you the best value for detailed vehicle history and maintenance reports.
-        </motion.p>
-
-        {/* Call to Action Buttons */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4"
-        >
-          <button className="w-full sm:w-auto px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-2xl transition-all shadow-lg shadow-blue-200 flex items-center justify-center gap-2 group">
-            <Bell className="w-5 h-5 group-hover:animate-bounce" />
-            Notify Me When Ready
-          </button>
-          
-          <Link 
-            href="/" 
-            className="w-full sm:w-auto px-8 py-4 bg-white border border-slate-200 text-slate-700 font-bold rounded-2xl hover:bg-slate-50 transition-all flex items-center justify-center gap-2"
+        {/* Header Section */}
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <motion.span 
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-blue-600 font-bold uppercase tracking-widest text-xs"
           >
-            <ArrowLeft className="w-5 h-5" />
-            Back to Home
-          </Link>
-        </motion.div>
+            Pricing
+          </motion.span>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="text-4xl md:text-5xl font-extrabold text-[#1a2b3c] mt-4 mb-6"
+          >
+            Choose a Pricing Plan
+          </motion.h2>
+          <p className={`${poppins.className} text-gray-500 font-light`}>
+            Transparent pricing for comprehensive vehicle intelligence. No hidden fees.
+          </p>
+        </div>
 
-        {/* Progress Bar Placeholder */}
-        <motion.div 
-          initial={{ width: 0 }}
-          animate={{ width: "100%" }}
-          transition={{ delay: 0.6, duration: 1.5 }}
-          className="max-w-md mx-auto mt-16 h-1.5 bg-slate-100 rounded-full overflow-hidden"
-        >
-          <div className="h-full bg-blue-600 w-[75%] rounded-full shadow-[0_0_10px_rgba(37,99,235,0.4)]" />
-        </motion.div>
-        <p className="mt-4 text-slate-400 text-xs font-semibold uppercase tracking-widest">
-          Development Progress: 75%
+        {/* Pricing Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {pricingPlans.map((plan, index) => (
+            <motion.div
+              key={plan.name}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              whileHover={{ y: -10 }}
+              className={`relative flex flex-col p-8 rounded-3xl transition-all duration-300 ${
+                plan.highlight 
+                ? "bg-white border-2 border-blue-600 shadow-2xl shadow-blue-100" 
+                : "bg-white border border-gray-100 shadow-xl shadow-gray-50"
+              }`}
+            >
+              {plan.highlight && (
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-blue-600 text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-wider">
+                  Most Popular
+                </div>
+              )}
+
+              <div className="mb-8">
+                <h3 className="text-xl font-bold text-gray-900 mb-4">{plan.name}</h3>
+                <div className="flex items-baseline">
+                  <span className="text-4xl font-extrabold text-gray-900">${plan.price}</span>
+                  <span className="text-gray-400 ml-2 font-medium">/report</span>
+                </div>
+              </div>
+
+              {/* Feature List */}
+              <ul className={`space-y-4 mb-10 grow ${poppins.className}`}>
+                {plan.features.map((feature) => (
+                  <li key={feature} className="flex items-start gap-3">
+                    <div className="mt-1 shrink-0 w-5 h-5 rounded-full bg-blue-50 flex items-center justify-center">
+                      <Check className="text-blue-600 w-3 h-3" strokeWidth={3} />
+                    </div>
+                    <span className="text-gray-600 text-sm leading-snug">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+
+              {/* Action Button */}
+              <button 
+                className={`w-full py-4 rounded-2xl font-bold transition-all duration-300 ${
+                  plan.highlight 
+                  ? "bg-blue-600 text-white hover:bg-blue-700 shadow-lg shadow-blue-200" 
+                  : "bg-gray-50 text-gray-900 hover:bg-gray-100 border border-gray-200"
+                }`}
+              >
+                Buy Now
+              </button>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Bottom Note */}
+        <p className={`${poppins.className} text-center mt-12 text-gray-400 text-sm`}>
+          Secure payment processing. Instant report delivery via email.
         </p>
       </div>
-    </div>
+    </section>
+ </>
   );
 };
 
-export default PricingComingSoon;
+export default PricingSection;
