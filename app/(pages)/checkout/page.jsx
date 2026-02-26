@@ -5,6 +5,8 @@ import { useSearchParams } from "next/navigation";
 import { Urbanist, Poppins } from "next/font/google";
 import { Country, State } from "country-state-city";
 import { ShieldCheck, ChevronDown, Lock, Info } from "lucide-react";
+import { db } from "@/lib/firebase"; // File path check kar lein
+import { collection, addDoc } from "firebase/firestore";
 
 import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
@@ -46,26 +48,38 @@ const CheckoutContent = () => {
   const availableStates = formData.country ? State.getStatesOfCountry(formData.country) : [];
 
   const handlePaymentSuccess = async (paymentResult) => {
-    const finalData = {
-      ...formData,
-      planName: currentPlan.name,
-      planPrice: currentPlan.price,
-      paymentId: paymentResult.id,
-      paymentStatus: "COMPLETED",
-      orderDate: new Date().toISOString()
-    };
-
-    try {
-      const response = await fetch("/api/checkout/form-submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(finalData),
-      });
-      if (response.ok) alert("Order Processed Successfully!");
-    } catch (error) {
-      alert("Payment Success, but data saving failed. Contact Support.");
-    }
+  const finalData = {
+    ...formData,
+    planName: currentPlan.name,
+    planPrice: currentPlan.price,
+    paymentId: paymentResult.id, // PayPal Transaction ID
+    paymentStatus: "COMPLETED",
+    orderDate: new Date().toISOString(),
+    orderTimestamp: new Date(), // Sorting ke liye
   };
+
+  try {
+    // 1. Save to Firebase Firestore
+    const docRef = await addDoc(collection(db, "orders"), finalData);
+    console.log("Document written with ID: ", docRef.id);
+
+    // 2. Apne API route ko call karein (Emails wagera ke liye)
+    const response = await fetch("/api/checkout/form-submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ...finalData, firebaseId: docRef.id }),
+    });
+
+    if (response.ok) {
+      alert("Order Successful! Data saved to Firebase.");
+      // Aap yahan user ko Success page par redirect kar sakte hain
+      // window.location.href = "/success";
+    }
+  } catch (error) {
+    console.error("Firebase/Submission Error:", error);
+    alert("Payment successful but data save failed. Please contact support.");
+  }
+};
 
   return (
     <div className={`bg-[#FFFFFF] min-h-screen text-black ${poppins.className}`}>
