@@ -142,7 +142,18 @@ const PricingSection = () => {
               >
                 Buy Now
               </button> */}
-              <PaypalButton amount={plan.price}/>
+              {/* <PaypalButton amount={plan.price}/> */}
+           
+<button 
+  onClick={() => window.location.href = `/checkout?plan=${encodeURIComponent(plan.name)}&price=${plan.price}`}
+  className={`w-full py-4 rounded-2xl font-bold transition-all duration-300 ${
+    plan.highlight 
+    ? "bg-blue-600 text-white hover:bg-blue-700 shadow-lg shadow-blue-200" 
+    : "bg-gray-50 text-gray-900 hover:bg-gray-100 border border-gray-200"
+  }`}
+>
+  Buy Now
+</button>
             </motion.div>
           ))}
         </div>
