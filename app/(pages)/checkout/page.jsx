@@ -146,7 +146,7 @@ const CheckoutContent = () => {
                   <span className={`${urbanist.className} text-3xl font-extrabold text-blue-600`}>${currentPlan.price}</span>
                 </div>
 
-                <div className="relative min-h-[50px] flex flex-col items-center justify-center">
+                <div className="relative min-h-12.5 flex flex-col items-center justify-center">
                   {agreed ? (
                     <div className="w-full relative z-50">
                       <PaypalButton amount={currentPlan.price} onSuccess={handlePaymentSuccess} />
