@@ -6,8 +6,8 @@ import { Urbanist, Poppins } from "next/font/google";
 import { Country, State } from "country-state-city";
 import { ShieldCheck, ChevronDown, Lock, Info } from "lucide-react";
 import { db } from "@/lib/firebase"; // File path check kar lein
-import { collection, addDoc } from "firebase/firestore";
-
+import { collection, addDoc , serverTimestamp } from "firebase/firestore";
+import { useRouter } from "next/navigation";
 import Navbar from "@/app/components/Navbar";
 import Footer from "@/app/components/Footer";
 import PaypalButton from "@/app/components/ui/PayPalButton";
@@ -27,6 +27,7 @@ const services = ["Car", "Bike", "Truck", "Yacht", "Jet Ski", "Boat", "Van", "Ca
 const CheckoutContent = () => {
   const searchParams = useSearchParams();
   const planId = searchParams.get("plan");
+  const router = useRouter();
 
   // Get current plan data from ID
   const currentPlan = useMemo(() => {
@@ -47,15 +48,16 @@ const CheckoutContent = () => {
   const allCountries = Country.getAllCountries();
   const availableStates = formData.country ? State.getStatesOfCountry(formData.country) : [];
 
-  const handlePaymentSuccess = async (paymentResult) => {
+const handlePaymentSuccess = async (paymentResult) => {
   const finalData = {
     ...formData,
     planName: currentPlan.name,
     planPrice: currentPlan.price,
-    paymentId: paymentResult.id, // PayPal Transaction ID
+    paymentId: paymentResult.id,
     paymentStatus: "COMPLETED",
     orderDate: new Date().toISOString(),
-    orderTimestamp: new Date(), // Sorting ke liye
+    // Best Practice: Use serverTimestamp for accurate sorting
+    orderTimestamp: serverTimestamp(), 
   };
 
   try {
@@ -63,21 +65,38 @@ const CheckoutContent = () => {
     const docRef = await addDoc(collection(db, "orders"), finalData);
     console.log("Document written with ID: ", docRef.id);
 
-    // 2. Apne API route ko call karein (Emails wagera ke liye)
-    const response = await fetch("/api/checkout/form-submit", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...finalData, firebaseId: docRef.id }),
+    // 2. Prepare URL Params for Success Page
+    const params = new URLSearchParams({
+      id: docRef.id,
+      firstName: formData.firstName || "",
+      lastName: formData.lastName || "",
+      email: formData.email || "",
+      plan: currentPlan.name,
+      price: currentPlan.price,
+      vin: formData.vin || "",
+      paymentId: paymentResult.id
     });
 
-    if (response.ok) {
-      alert("Order Successful! Data saved to Firebase.");
-      // Aap yahan user ko Success page par redirect kar sakte hain
-      // window.location.href = "/success";
+    // 3. Send Email/API Call
+    try {
+      await fetch("/api/checkout/form-submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...finalData, firebaseId: docRef.id }),
+      });
+    } catch (apiErr) {
+      console.error("Email API failed, but order is saved:", apiErr);
+      // We don't stop the user here because payment is already done
     }
+
+    // 4. Redirect to Success Page
+    // Alert ki ab zaroorat nahi hai, page transition hi kafi hai
+    router.push(`/checkout/success?${params.toString()}`);
+
   } catch (error) {
-    console.error("Firebase/Submission Error:", error);
-    alert("Payment successful but data save failed. Please contact support.");
+    console.error("Firebase Error:", error);
+    // Agar payment ho gayi par firebase fail hua, toh user ko batana zaroori hai
+    alert("Payment confirmed! But we had trouble saving your details. Please save your Transaction ID: " + paymentResult.id);
   }
 };
 
