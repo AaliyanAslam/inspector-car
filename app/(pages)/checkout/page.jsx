@@ -187,13 +187,13 @@ const handlePaymentSuccess = async (paymentResult) => {
                   ) : (
                     <div className="w-full py-4 px-3 bg-gray-50 rounded border border-dashed border-gray-200 text-center">
                       <p className="text-[9px] text-gray-400 font-bold uppercase tracking-tight flex items-center justify-center gap-1">
-                        <Info size={12}/> Accept terms to enable pay
+                        <Info size={12}/>Fill the form and accept terms to enable pay
                       </p>
                     </div>
                   )}
                 </div>
 
-                <div className="mt-6 flex items-center justify-center gap-2 text-gray-300 border-t border-gray-50 pt-4">
+                <div className="mt-6 flex items-center justify-center gap-2 text-gray-600 border-t border-gray-50 pt-4">
                   <ShieldCheck size={12} />
                   <span className="text-[10px] font-bold uppercase tracking-tighter">Secure SSL Payment</span>
                 </div>
@@ -210,7 +210,7 @@ const handlePaymentSuccess = async (paymentResult) => {
 const Input = ({ label, ...props }) => (
   <div className="space-y-1 w-full">
     <label className="text-[10px] font-bold uppercase tracking-wider text-gray-400 ml-1">{label}</label>
-    <input {...props} className="w-full bg-white border border-gray-300 rounded p-2.5 text-xs font-medium focus:ring-1 focus:ring-blue-500 transition-all outline-none text-black placeholder:text-gray-200" />
+    <input {...props}  className="w-full bg-white border border-gray-300 rounded p-2.5 text-xs font-medium focus:ring-1 focus:ring-blue-500 transition-all outline-none text-black placeholder:text-gray-200" />
   </div>
 );
 
@@ -228,7 +228,7 @@ const CustomSelect = ({ label, options, ...props }) => (
 
 export default function CheckoutPage() {
   return (
-    <Suspense fallback={<div className="h-screen flex items-center justify-center bg-white text-xs font-bold uppercase tracking-widest">Initialising...</div>}>
+    <Suspense fallback={<div className="h-screen flex items-center justify-center bg-white text-xs font-bold uppercase tracking-widest">Loading...</div>}>
       <CheckoutContent />
     </Suspense>
   );
