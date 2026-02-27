@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Poppins, Urbanist } from "next/font/google";
+import { useRouter } from "next/navigation";
 
 const urbanist = Urbanist({
   subsets: ["latin"],
@@ -43,6 +44,7 @@ const itemVariants = {
 };
 
 const StatsSection = () => {
+  const router = useRouter();
   return (
     // PY-20 for mobile, PY-28 for desktop
     <section className="w-full bg-[#07101D] py-20 lg:py-28 px-4 sm:px-6 lg:px-12 border-t border-white/5 overflow-hidden">
@@ -123,7 +125,10 @@ const StatsSection = () => {
               transition={{ delay: 0.8, duration: 0.6 }}
               className="pt-2"
             >
-              <button className="group cursor-pointer relative w-full sm:w-auto inline-flex justify-center items-center gap-3 bg-blue-600 text-white px-8 lg:px-9 py-4 rounded-sm font-bold text-xs sm:text-sm tracking-wide transition-all duration-300 hover:bg-white hover:text-[#07101D] active:scale-95 shadow-lg">
+              <button
+      onClick={() => router.push("/pricing")}
+              
+              className="group cursor-pointer relative w-full sm:w-auto inline-flex justify-center items-center gap-3 bg-blue-600 text-white px-8 lg:px-9 py-4 rounded-sm font-bold text-xs sm:text-sm tracking-wide transition-all duration-300 hover:bg-white hover:text-[#07101D] active:scale-95 shadow-lg">
                 <span className="relative z-10 uppercase">View Pricing Plans</span>
                 <ArrowRight size={16} className="relative z-10 group-hover:translate-x-1 transition-transform duration-300" />
               </button>

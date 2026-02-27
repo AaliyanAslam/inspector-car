@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Poppins, Urbanist } from "next/font/google";
+import { useRouter } from "next/navigation";
 
 const urbanist = Urbanist({
   subsets: ["latin"],
@@ -43,6 +44,7 @@ const fadeUp = {
 };
 
 const VehicleReports = () => {
+  const router = useRouter();
   return (
     <section className="w-full bg-[#07101D] py-20 lg:py-28 px-4 sm:px-6 lg:px-12 border-t border-white/5 overflow-hidden">
       <div className="max-w-7xl mx-auto">
@@ -155,7 +157,10 @@ const VehicleReports = () => {
 
             {/* Action Button */}
             <motion.div variants={fadeUp} className="pt-1">
-              <button className="cursor-pointer group w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-blue-600 text-white px-9 py-4 rounded-sm font-bold text-xs sm:text-sm tracking-widest hover:bg-white hover:text-[#07101D] transition-all duration-300 active:scale-95 shadow-[0_10px_20px_rgba(37,99,235,0.2)]">
+              <button
+      onClick={() => router.push("/pricing")}
+              
+              className="cursor-pointer group w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-blue-600 text-white px-9 py-4 rounded-sm font-bold text-xs sm:text-sm tracking-widest hover:bg-white hover:text-[#07101D] transition-all duration-300 active:scale-95 shadow-[0_10px_20px_rgba(37,99,235,0.2)]">
                 EXPLORE MORE
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </button>

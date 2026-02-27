@@ -2,14 +2,18 @@
 
 import { motion } from "framer-motion";
 import { Car } from "lucide-react"; // Custom ya Lucide Car component
+import { useRouter } from "next/navigation";
 
 const GlowButton = ({ text = "Start Vehicle Check" }) => {
+  const router = useRouter();
   return (
     // Yahan humne motion.button use kiya hai taake pooray button ka hover track ho sake
     <motion.button 
       initial="initial"
       whileHover="hover"
       className="group relative cursor-pointer bg-neutral-200 rounded-full p-0.5 overflow-hidden"
+      onClick={() => router.push("/pricing")}
+      
     >
 
       {/* Outer Soft Glow */}

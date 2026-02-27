@@ -84,7 +84,7 @@ const CallToAction = () => {
           className="flex justify-center"
         >
           <Link 
-            href="/contact"
+            href="#"
             className="group relative inline-flex items-center justify-center px-10 py-4 font-bold text-white transition-all duration-300 bg-blue-600  hover:bg-white hover:text-black hover:scale-105 active:scale-95 shadow-[0_10px_30px_rgba(37,99,235,0.3)]"
           >
             <span className="relative z-10 flex items-center gap-2">

@@ -133,7 +133,7 @@ const DetailBlock = ({ label, value, icon }) => (
        {icon}
        <p className="text-[10px] font-bold uppercase tracking-widest text-slate-400">{label}</p>
     </div>
-    <p className="text-[15px] font-bold text-slate-800 break-words leading-tight">{value}</p>
+    <p className="text-[15px] font-bold text-slate-800 wrap-break-words leading-tight">{value}</p>
   </div>
 );
 

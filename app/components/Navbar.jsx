@@ -5,6 +5,7 @@ import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import { X, Menu } from "lucide-react";
+import GlowButton from "./ui/Button";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -18,8 +19,7 @@ const Navbar = () => {
   const navLinks = [
     { name: "Home", href: "/" },
     { name: "Pricing", href: "/pricing" },
-    { name: "About Us", href: "/about" },
-    { name: "Contact Us", href: "/contact" },
+  
   ];
 
   const containerVariants = {
@@ -64,6 +64,9 @@ const Navbar = () => {
               </Link>
             ))}
           </div>
+      <div className="hidden md:flex">
+            <GlowButton />
+      </div>
 
           {/* Mobile Hamburger Toggle */}
           <motion.button
@@ -136,13 +139,8 @@ const Navbar = () => {
 
               {/* Panel Footer */}
               <div className="mt-auto p-8 border-t border-slate-50">
-                <Link 
-                  href="/get-started"
-                  onClick={() => setIsOpen(false)}
-                  className="block w-full text-center py-4 bg-blue-600 text-white rounded-xl font-bold shadow-lg shadow-blue-200"
-                >
-                  Get Started
-                </Link>
+            <GlowButton />
+                
               </div>
             </motion.div>
           </>
