@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import { X, Menu } from "lucide-react";
 import GlowButton from "./ui/Button";
+import Image from "next/image";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -42,15 +43,17 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-20 sm:h-24">
           
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 relative ">
-            <div className="w-8 h-8 bg-orange-400 rounded-full flex items-center justify-center shadow-md shadow-orange-200">
-              <span className="text-white text-xs">✓</span>
-            </div>
-            <span className="text-xl sm:text-2xl font-bold tracking-tight">
-              <span className="text-[#1a2b3c]">Inspect A</span>
-              <span className="text-[#3b82f6] ml-1.5">Report</span>
-            </span>
-          </Link>
+        <Link href="/" className="flex items-center gap-2 relative">
+  <div className="w-36 sm:w-40 md:w-40 lg:w-48 xl:w-50 2xl:w-52 relative h-12 sm:h-16 md:h-20 lg:h-24 xl:h-28 2xl:h-26">
+    <Image
+      src="/logo.png"
+      alt="Report My Vehicle Logo"
+      fill
+      style={{ objectFit: "contain" }}
+      priority
+    />
+  </div>
+</Link>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-8 items-center">
