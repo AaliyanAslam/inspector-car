@@ -1,5 +1,6 @@
 "use client";
 
+
 import React from "react";
 import { motion } from "framer-motion";
 import { Urbanist, Poppins } from "next/font/google";
@@ -7,9 +8,11 @@ import { Check } from "lucide-react";
 import Navbar from "@/app/components/Navbar";
 import PageTitle from "@/app/components/ui/PageTitle";
 import Footer from "@/app/components/Footer";
+import Head from "next/head";
 
 const urbanist = Urbanist({ subsets: ["latin"], weight: ["600", "700", "800"] });
 const poppins = Poppins({ subsets: ["latin"], weight: ["300", "400", "500"] });
+
 
 // exported to be used in checkout
 export const pricingPlans = [
@@ -39,6 +42,11 @@ export const pricingPlans = [
 export default function PricingSection() {
   return (
     <>
+     <Head>
+        <title>Vehicle Check Pricing - Report My Vehicle</title>
+        <meta name="description" content="Choose the perfect plan for your vehicle check. Comprehensive vehicle intelligence with no hidden fees. Basic, Standard, and Premium plans available." />
+        <meta name="keywords" content="vehicle check pricing, car report plans, vehicle inspection, VIN report, vehicle history, auto diagnostics, maintenance report" />
+      </Head>
       <Navbar />
       <PageTitle tittle="Pricing" />
       <section className={`py-16 md:py-24 bg-[#F8F9FA] ${urbanist.className}`}>
