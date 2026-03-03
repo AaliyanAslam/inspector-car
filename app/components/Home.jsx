@@ -19,7 +19,7 @@ const Home = () => {
     <WhatWeDo/>
     <StatsSection/>
     <GlobalPresence/>
-    <OurTeam/>
+    {/* <OurTeam/> */}
     <TestimonialSection/>
     <CallToAction/>
     <Footer/>

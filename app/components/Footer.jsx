@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Urbanist, Poppins } from "next/font/google";
 import Link from "next/link";
 import { Mail, MapPin, Phone, ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 
 const urbanist = Urbanist({
   subsets: ["latin"],
@@ -27,17 +28,17 @@ const Footer = () => {
       links: [
         { name: "Home", href: "/" },
         { name: "Pricing", href: "/pricing" },
-        { name: "About Us", href: "/" },
+        // { name: "About Us", href: "/" },
       ],
     },
-    {
-      title: "Useful Links",
-      links: [
-        { name: "Our Team", href: "/" },
-        { name: "Contact Us", href: "/" },
-        { name: "Privacy & Policies", href: "/" },
-      ],
-    },
+    // {
+    //   title: "Useful Links",
+    //   links: [
+    //     { name: "Our Team", href: "/" },
+    //     { name: "Contact Us", href: "/" },
+    //     { name: "Privacy & Policies", href: "/" },
+    //   ],
+    // },
   ];
 
   return (
@@ -49,14 +50,17 @@ const Footer = () => {
           
           {/* BRAND COLUMN */}
           <div className="lg:col-span-5 flex flex-col items-start">
-            <div className="flex items-center gap-3 mb-6 group cursor-pointer">
-              <div className="relative h-10 w-10 bg-blue-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-600/20 group-hover:rotate-6 transition-transform">
-                 <span className="text-white font-bold text-xl">i</span>
-              </div>
-              <h2 className="text-white text-2xl font-extrabold tracking-tight">
-                Inspect A <span className="text-blue-500">Report</span>
-              </h2>
-            </div>
+           <Link href="/" className="flex items-center gap-2 relative">
+  <div className="w-36 sm:w-40 md:w-40 lg:w-48 xl:w-50 2xl:w-52 relative h-12 sm:h-16 md:h-20 lg:h-24 xl:h-28 2xl:h-26">
+    <Image
+      src="/logo.png"
+      alt="Report My Vehicle Logo"
+      fill
+      style={{ objectFit: "contain" }}
+      priority
+    />
+  </div>
+</Link>
             <p className={`${poppins.className} text-gray-500 text-base leading-relaxed max-w-sm mb-8 font-light`}>
               Get detailed VIN reports, vehicle specifications, and safety updates. 
               Serving the USA, Canada, Europe, and more.
@@ -99,7 +103,7 @@ const Footer = () => {
               Informations
               <span className="absolute -bottom-2 left-0 h-0.5 w-6 bg-blue-600 rounded-full" />
             </h4>
-            <div className="space-y-5">
+            <div className="space-y-2">
               <a 
                 href="mailto:inspectareports@gmail.com" 
                 className="flex items-center gap-4 group hover:text-white transition-colors"
@@ -107,7 +111,7 @@ const Footer = () => {
                 <div className="h-10 w-10 rounded-lg bg-gray-900 flex items-center justify-center group-hover:bg-blue-600/10 group-hover:text-blue-500 transition-all">
                   <Mail className="w-4 h-4" />
                 </div>
-                <span className="text-[14px] break-all font-poppins font-light">inspectareports@gmail.com</span>
+                <span className="text-[14px] break-all font-poppins font-light">reportmyvehicle@gmail.com</span>
               </a>
               {/* Optional secondary contact info */}
               <div className="flex items-center gap-4 group">
@@ -124,12 +128,12 @@ const Footer = () => {
         {/* BOTTOM SECTION: COPYRIGHT */}
         <div className="pt-8 border-t border-gray-900 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className={`${poppins.className} text-gray-600 text-sm font-light`}>
-            Copyright © {currentYear} <span className="text-gray-400 font-medium">Aaliyan Aslam</span>. All rights reserved.
+            Copyright © {currentYear} <span className="text-gray-400 font-medium">reportmyvehicle.com</span>. All rights reserved.
           </p>
-          <div className="flex items-center gap-8 text-xs uppercase tracking-widest font-bold text-gray-600">
+          {/* <div className="flex items-center gap-8 text-xs uppercase tracking-widest font-bold text-gray-600">
              <Link href="/terms" className="hover:text-blue-500 transition-colors">Terms</Link>
              <Link href="/cookies" className="hover:text-blue-500 transition-colors">Cookies</Link>
-          </div>
+          </div> */}
         </div>
 
       </div>
