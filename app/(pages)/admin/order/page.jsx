@@ -66,10 +66,10 @@ function LoginGate({ onAuth }) {
         className="relative w-full max-w-md"
       >
         {/* Card */}
-        <div className="border border-white/[0.09] bg-white/[0.03] backdrop-blur-sm rounded-sm overflow-hidden shadow-[0_40px_80px_rgba(0,0,0,0.5)]">
+        <div className="border border-white/9 bg-white/3 backdrop-blur-sm rounded-sm overflow-hidden shadow-[0_40px_80px_rgba(0,0,0,0.5)]">
 
           {/* Top accent bar */}
-          <div className="h-[3px] bg-gradient-to-r from-blue-600 via-blue-500 to-blue-400" />
+          <div className="h-0.75 bg-linear-to-r from-blue-600 via-blue-500 to-blue-400" />
 
           <div className="px-8 py-10 sm:px-10 sm:py-12">
 
@@ -96,7 +96,7 @@ function LoginGate({ onAuth }) {
                 <div className={`relative flex items-center border rounded-sm transition-all duration-200 ${
                   focusedField === "user"
                     ? "border-blue-500 shadow-[0_0_0_1px_rgba(59,130,246,0.25)] bg-white/[0.07]"
-                    : "border-white/[0.09] bg-white/[0.04]"
+                    : "border-white/9 bg-white/4"
                 }`}>
                   <input
                     type="text"
@@ -119,7 +119,7 @@ function LoginGate({ onAuth }) {
                 <div className={`relative flex items-center border rounded-sm transition-all duration-200 ${
                   focusedField === "pass"
                     ? "border-blue-500 shadow-[0_0_0_1px_rgba(59,130,246,0.25)] bg-white/[0.07]"
-                    : "border-white/[0.09] bg-white/[0.04]"
+                    : "border-white/4 bg-white/5"
                 }`}>
                   <input
                     type={showPass ? "text" : "password"}
@@ -184,7 +184,7 @@ function LoginGate({ onAuth }) {
           </div>
 
           {/* Bottom strip */}
-          <div className="px-8 py-4 border-t border-white/[0.05] flex items-center justify-center gap-2">
+          <div className="px-8 py-4 border-t border-white/5 flex items-center justify-center gap-2">
             <Car size={12} className="text-white/20" />
             <span className="text-white/20 text-[10px] tracking-widest uppercase font-medium">
               Inspect a Report — Admin Portal
