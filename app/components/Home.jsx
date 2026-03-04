@@ -9,6 +9,7 @@ import OurTeam from './OurTeam'
 import TestimonialSection from './TestimonialSection'
 import CallToAction from './CallToAction'
 import Footer from './Footer'
+import Contact from './Contact'
 
 const Home = () => {
   return (
@@ -21,6 +22,7 @@ const Home = () => {
     <GlobalPresence/>
     {/* <OurTeam/> */}
     <TestimonialSection/>
+    <Contact />
     <CallToAction/>
     <Footer/>
     </>
